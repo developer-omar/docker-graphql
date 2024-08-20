@@ -21,7 +21,7 @@ jobs:
       uses: docker/login-action@v3
       with:
         username: ${{ vars.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_TOKEN }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
     # - name: Docker Login
     #   env:
     #     DOCKER_USER: ${{ vars.DOCKER_USERNAME }}
