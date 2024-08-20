@@ -17,14 +17,19 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - name: Docker Login
-      env:
-        DOCKER_USER: ${{ vars.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run:
-        echo "Iniciando login"
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-        echo "Fin del login"
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ vars.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_TOKEN }}
+    # - name: Docker Login
+    #   env:
+    #     DOCKER_USER: ${{ vars.DOCKER_USERNAME }}
+    #     DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    #   run:
+    #     echo "Iniciando login"
+    #     docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    #     echo "Fin del login"
     - name: Build and push
       uses: docker/build-push-action@v6
       with:
