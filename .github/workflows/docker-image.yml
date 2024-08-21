@@ -46,7 +46,7 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         push: true
-        tags: ${{ vars.DOCKER_USERNAME }}/docker-graphql:$NEW_VERSION, ${{ vars.DOCKER_USERNAME }}/docker-graphql:latest
+        tags: ${{ vars.DOCKER_USERNAME }}/docker-graphql:${{ env.NEW_VERSION }}, ${{ vars.DOCKER_USERNAME }}/docker-graphql:latest
 
     # - name: Build Docker Image
     #   run:
